@@ -1,8 +1,8 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+
 import { Mesh } from 'three';
 
 const GROUND_HEIGHT = -50;
-
 
 export function Terrain() {
   const terrain = useRef<Mesh>(null!);
@@ -14,7 +14,7 @@ export function Terrain() {
       rotation={[-Math.PI / 2, 0, 0]}
       ref={terrain}
     >
-      <planeBufferGeometry attach="geometry" args={[5000, 5000, 200, 200]}/>
+      <planeBufferGeometry attach="geometry" args={[5000, 5000, 200, 200]} />
       <meshStandardMaterial
         attach="material"
         color="blue"

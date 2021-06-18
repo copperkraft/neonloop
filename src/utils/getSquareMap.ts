@@ -1,4 +1,4 @@
-import { WallCode } from './getWallMap';
+import { WallCode } from './wallCode.type';
 
 export const getSquareMap = (map: (1 | 0)[][]) => {
   const newMap: WallCode[][] = [];

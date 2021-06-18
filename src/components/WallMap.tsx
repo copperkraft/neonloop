@@ -8,14 +8,12 @@ export const WallMap: React.FC = () => {
   const level = addLevelBorders(level3);
 
   const walls = getLevelWallMap(level, 'W')
-    .flatMap((row, x) =>row
-      .map((type, y) => {
-        return (<Wall position={[y, 0, x]} type={type}/>);
-      }));
+    .flatMap((row, x) => row
+      .map((type, y) => (<Wall position={[y, 0, x]} type={type} />)));
 
   return (
-    <group position={[- level[0].length / 2, 0, -level.length / 2]}>
+    <group position={[-level[0].length / 2, 0, -level.length / 2]}>
       { walls }
     </group>
   );
-}
+};
