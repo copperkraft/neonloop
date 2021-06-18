@@ -1,43 +1,30 @@
 import React, { Suspense } from 'react'
-import { Camera, Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei';
-import { Arwing } from '../Models/Arwing';
+import { Canvas } from '@react-three/fiber'
+import { MapControls } from '@react-three/drei';
 import { Terrain } from '../components/Terrain';
-import { Target } from '../components/Target';
-
-interface GameProps {
-  configs?: {
-    cameraConfigs: Camera;
-  };
-}
+import { WallMap } from '../components/WallMap';
 
 const Scene = () => {
   return (
     <>
-      <Target />
       <Terrain />
-      <Arwing />
-      <directionalLight intensity={0.5} position={[5, 3, -5]}/>
-      <ambientLight intensity={0.2} />
+      <WallMap />
+      <directionalLight color={'purple'} intensity={1} position={[5, 3, -5]}/>
+      <directionalLight color={'blue'} intensity={2} position={[100, 0, 30]}/>
+      <directionalLight color={'red'} intensity={3} position={[-100, 0, -30]}/>
     </>
   );
 };
 
-export const Game: React.FC<GameProps> = ({configs}) => {
+export const Game: React.FC = () => {
   return (
     <Canvas
       camera={{ position: [0, 5, 10] }}
       onCreated={({ gl, size }) => {
-        gl.setClearColor('#252934');
+        gl.setClearColor('#040404');
       }}
     >
-      <OrbitControls
-        enableZoom={false}
-        maxAzimuthAngle={Math.PI / 4}
-        maxPolarAngle={Math.PI}
-        minAzimuthAngle={-Math.PI / 4}
-        minPolarAngle={0}
-      />
+      <MapControls />
       <Suspense fallback={null}>
         <Scene/>
       </Suspense>

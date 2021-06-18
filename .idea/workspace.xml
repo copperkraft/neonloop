@@ -2,18 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07a31ae8-5b2e-40f0-a294-3f30f0998618" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/models/arwing.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/target.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Arwing.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Target.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Terrain.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/Game.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Wall.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/WallMap.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/level1.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/level2.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/level3.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/level4.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/level5.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/level6.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/level7.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/levels/levelData.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/Prism.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/addLevelBorders.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/geometryMapping.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getSquareMap.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getWallMap.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Arwing.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Target.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Terrain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Terrain.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Game.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -48,7 +57,11 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="D:\projects\neonloop\node_modules\typescript\lib" />
@@ -56,11 +69,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\neonloop\src" />
+      <recent name="D:\projects\neonloop\src\utils" />
+      <recent name="D:\projects\neonloop\src\components" />
       <recent name="D:\projects\neonloop\public\models" />
       <recent name="D:\projects\neonloop\public\assets" />
-      <recent name="D:\projects\neonloop\public" />
-      <recent name="D:\projects\neonloop\assets" />
-      <recent name="D:\projects\neonloop\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\neonloop\src\Models" />
@@ -83,8 +96,17 @@
       <workItem from="1623704727746" duration="559000" />
       <workItem from="1623705317415" duration="1163000" />
       <workItem from="1623706795677" duration="476000" />
-      <workItem from="1623707287070" duration="25603000" />
+      <workItem from="1623707287070" duration="39671000" />
+      <workItem from="1624029304315" duration="3524000" />
     </task>
+    <task id="LOCAL-00001" summary="Test some model uploading">
+      <created>1623872269370</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623872269371</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +123,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test some model uploading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test some model uploading" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
