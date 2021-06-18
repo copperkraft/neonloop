@@ -20,7 +20,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   ignorePatterns: [
-    '.eslint.js'
+    '.eslintrc.js'
   ],
   rules: {
     'import/prefer-default-export': 0
