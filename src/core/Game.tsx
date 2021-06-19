@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { MapControls, PerspectiveCamera } from '@react-three/drei';
 import { useControls } from 'leva';
 import { NeonScene } from '../components/NeonScene';
-import { WallMap } from '../components/WallMap';
+import { Level } from '../components/Level';
 
 export const Game: React.FC = () => {
   const {
@@ -30,7 +30,7 @@ export const Game: React.FC = () => {
       <MapControls />
       <Suspense fallback={null}>
         <NeonScene>
-          <WallMap level={level} />
+          <Level levelIndex={level} />
         </NeonScene>
       </Suspense>
     </Canvas>
