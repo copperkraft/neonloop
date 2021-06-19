@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Sphere } from '@react-three/drei';
-import { Color, Group, Vector3 } from 'three';
+import { Color, Group } from 'three';
 import { useFrame } from '@react-three/fiber';
 import { DebugLine } from './DebugLine';
 
@@ -12,18 +12,19 @@ interface BallProps {
 export const Ball: React.FC<BallProps> = ({ position, velocity }: BallProps) => {
   const ball = useRef<Group>(null!);
 
-  let currentPosition = new Vector3(...position);
+  useEffect(() => {
+    [ball.current.position.x, , ball.current.position.z] = position;
+  }, [position]);
 
   useFrame(() => {
     const [x, y] = velocity;
     ball.current.position.x += x;
     ball.current.position.z -= y;
-    currentPosition = ball.current.position;
   });
 
   return (
     <group ref={ball} position={position}>
-      <DebugLine origin={currentPosition.toArray()} vector={velocity} />
+      <DebugLine origin={[0, 0, 0]} vector={velocity} />
       <Sphere
         args={[0.5, 20, 10]}
         visible

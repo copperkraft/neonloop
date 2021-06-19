@@ -5,18 +5,16 @@ import { getLevelWallMap } from '../utils/getWallMap';
 
 interface WallMapProps {
   level: LevelData;
+  position: [number, number, number];
 }
 
-export const WallMap: React.FC<WallMapProps> = ({ level }: WallMapProps) => {
+export const WallMap: React.FC<WallMapProps> = ({ level, position }: WallMapProps) => {
   const walls = useMemo(() => getLevelWallMap(level, 'W')
     .flatMap((row, x) => row
       .map((type, y) => (<Wall position={[y, 0, x]} type={type} />))), [level]);
 
-  const height = level.length;
-  const width = level[0].length;
-
   return (
-    <group position={[-width / 2, 0, -height / 2]}>
+    <group position={position}>
       {walls}
     </group>
   );
