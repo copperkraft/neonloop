@@ -1,19 +1,27 @@
-import React from 'react';
-import { level3 } from '../data/levels';
+import React, { useMemo } from 'react';
+import { levels } from '../data/levels';
 import { Wall } from './Wall';
 import { getLevelWallMap } from '../utils/getWallMap';
 import { addLevelBorders } from '../utils/addLevelBorders';
 
-export const WallMap: React.FC = () => {
-  const level = addLevelBorders(level3);
+interface WallMapProps {
+  level: number;
+}
 
-  const walls = getLevelWallMap(level, 'W')
-    .flatMap((row, x) => row
-      .map((type, y) => (<Wall position={[y, 0, x]} type={type} />)));
+export const WallMap: React.FC<WallMapProps> = ({ level: levelIndex }: WallMapProps) => {
+  const [height, width, walls] = useMemo(() => {
+    const level = addLevelBorders(levels[levelIndex]);
+
+    const levelWalls = getLevelWallMap(level, 'W')
+      .flatMap((row, x) => row
+        .map((type, y) => (<Wall position={[y, 0, x]} type={type} />)));
+
+    return [level.length, level[0].length, levelWalls];
+  }, [levelIndex]);
 
   return (
-    <group position={[-level[0].length / 2, 0, -level.length / 2]}>
-      { walls }
+    <group position={[-width / 2, 0, -height / 2]}>
+      {walls}
     </group>
   );
 };
