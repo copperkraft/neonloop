@@ -8,17 +8,17 @@ interface BallProps {
 
 export const Ball: React.FC<BallProps> = ({ position = [0, 0, 0] }: BallProps) => (
   <Sphere
-    args={[1, 20, 10]}
+    args={[0.5, 20, 10]}
     position={position}
     visible
   >
     <meshStandardMaterial
       attach="material"
-      color="blue"
-      roughness={1}
-      emissive={new Color('#1010ff')}
+      color="green"
+      roughness={0}
+      emissive={new Color('#ff0000')}
       emissiveIntensity={1}
-      metalness={0.2}
+      metalness={1}
       opacity={1}
       transparent
     />

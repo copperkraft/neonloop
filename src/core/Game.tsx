@@ -23,7 +23,7 @@ export const Game: React.FC = () => {
   return (
     <Canvas
       onCreated={({ gl }) => {
-        gl.setClearColor('#040404');
+        gl.setClearColor('#000000');
       }}
     >
       <PerspectiveCamera makeDefault position={[x, y, z]} />
