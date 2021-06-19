@@ -3,6 +3,7 @@ import { levels } from '../data/levels';
 import { Wall } from './Wall';
 import { getLevelWallMap } from '../utils/getWallMap';
 import { addLevelBorders } from '../utils/addLevelBorders';
+import { Ball } from './Ball';
 
 interface WallMapProps {
   level: number;
@@ -22,6 +23,7 @@ export const WallMap: React.FC<WallMapProps> = ({ level: levelIndex }: WallMapPr
   return (
     <group position={[-width / 2, 0, -height / 2]}>
       {walls}
+      <Ball position={[width / 2, 0, height / 2]} />
     </group>
   );
 };

@@ -23,6 +23,8 @@ module.exports = {
     '.eslintrc.js'
   ],
   rules: {
-    'import/prefer-default-export': 0
+    'react/require-default-props': 0, // interferes with typescript interfaces
+    'import/prefer-default-export': 0, // i consider export default a bad practice
+    'import/no-default-export': 2
   }
 };

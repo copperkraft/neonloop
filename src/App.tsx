@@ -1,7 +1,7 @@
 import React from 'react';
 import { Game } from './core/Game';
 
-const App = () => (
+export const App = () => (
   <div
     style={{
       height: '100vh',
@@ -11,5 +11,3 @@ const App = () => (
     <Game />
   </div>
 );
-
-export default App;
