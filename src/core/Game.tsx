@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { MapControls, PerspectiveCamera } from '@react-three/drei';
+import { MapControls, PerspectiveCamera, Stats } from '@react-three/drei';
 import { useControls } from 'leva';
 import { NeonScene } from '../components/NeonScene';
 import { Level } from '../components/Level';
@@ -26,6 +26,7 @@ export const Game: React.FC = () => {
         gl.setClearColor('#000000');
       }}
     >
+      <Stats />
       <PerspectiveCamera makeDefault position={[x, y, z]} />
       <MapControls />
       <Suspense fallback={null}>

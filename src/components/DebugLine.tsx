@@ -1,17 +1,16 @@
 import React from 'react';
 import { Line } from '@react-three/drei';
+import { Vector3 } from 'three';
 
 interface BallProps {
   origin: [number, number, number],
-  vector: [number, number],
+  vector: Vector3,
 }
 
 export const DebugLine: React.FC<BallProps> = ({ origin, vector }: BallProps) => {
-  const [x, y, z] = origin;
-  const [xv, zv] = vector;
   const points: [number, number, number][] = [
     origin,
-    [x + xv * 100, y, z + zv * 100],
+    vector.toArray(),
   ];
 
   return (

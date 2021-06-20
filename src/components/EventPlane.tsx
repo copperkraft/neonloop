@@ -4,18 +4,28 @@ import { ThreeEvent } from '@react-three/fiber';
 
 interface LevelProps {
   size: [number, number],
-  onClick: (event: ThreeEvent<MouseEvent>) => void
+  onPointerDown: (event: ThreeEvent<PointerEvent>) => void
+  onPointerMove: (event: ThreeEvent<PointerEvent>) => void
+  onPointerUp: (event: ThreeEvent<PointerEvent>) => void
+  onPointerLeave: (event: ThreeEvent<PointerEvent>) => void
 }
 
 export const EventPlane: React.FC<LevelProps> = ({
   size: [width, height],
-  onClick,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
+  onPointerLeave,
 }: LevelProps) => (
   <Plane
     rotation={[-Math.PI / 2, 0, Math.PI / 2]}
     args={[height - 1, width - 1, height, width]}
     position={[-0.5, 0.01, -0.5]}
-    onClick={onClick}
+    visible={false}
+    onPointerDown={onPointerDown}
+    onPointerMove={onPointerMove}
+    onPointerUp={onPointerUp}
+    onPointerLeave={onPointerLeave}
   >
     <meshStandardMaterial
       attach="material"

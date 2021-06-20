@@ -1,29 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { MutableRefObject } from 'react';
 import { Sphere } from '@react-three/drei';
-import { Color, Group } from 'three';
+import { Color, Mesh, Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber';
 import { DebugLine } from './DebugLine';
 
 interface BallProps {
-  position: [number, number, number],
-  velocity: [number, number],
+  velocity: Vector3,
+  ball: MutableRefObject<Mesh>
 }
 
-export const Ball: React.FC<BallProps> = ({ position, velocity }: BallProps) => {
-  const ball = useRef<Group>(null!);
-
-  useEffect(() => {
-    [ball.current.position.x, , ball.current.position.z] = position;
-  }, [position]);
-
-  useFrame(() => {
-    const [x, y] = velocity;
-    ball.current.position.x += x;
-    ball.current.position.z -= y;
+export const Ball: React.FC<BallProps> = ({ velocity, ball }: BallProps) => {
+  useFrame((state, delta) => {
+    ball.current.position.addScaledVector(velocity, delta);
   });
 
   return (
-    <group ref={ball} position={position}>
+    <group ref={ball}>
       <DebugLine origin={[0, 0, 0]} vector={velocity} />
       <Sphere
         args={[0.5, 20, 10]}
