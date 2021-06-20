@@ -1,20 +1,18 @@
 import React, { useMemo } from 'react';
-import { LevelData } from '../data/levels';
 import { Wall } from './Wall';
-import { getLevelWallMap } from '../utils/getWallMap';
+import { getSquareMap } from '../utils/getSquareMap';
 
 interface WallMapProps {
-  level: LevelData;
-  position: [number, number, number];
+  wallMap: (1 | 0)[][];
 }
 
-export const WallMap: React.FC<WallMapProps> = ({ level, position }: WallMapProps) => {
-  const walls = useMemo(() => getLevelWallMap(level, 'W')
+export const WallMap: React.FC<WallMapProps> = ({ wallMap }: WallMapProps) => {
+  const walls = useMemo(() => getSquareMap(wallMap)
     .flatMap((row, x) => row
-      .map((type, y) => (<Wall position={[y, 0, x]} type={type} />))), [level]);
+      .map((type, y) => (<Wall position={[y, 0, x]} type={type} />))), [wallMap]);
 
   return (
-    <group position={position}>
+    <group>
       {walls}
     </group>
   );

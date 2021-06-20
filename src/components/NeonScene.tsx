@@ -10,7 +10,7 @@ export const NeonScene: React.FC = ({ children }: React.PropsWithChildren<{}>) =
     <directionalLight color="red" intensity={3} position={[-100, 0, -30]} />
     {children}
     <EffectComposer>
-      <Bloom intensity={1} luminanceThreshold={0.1} luminanceSmoothing={0.3} height={300} />
+      <Bloom intensity={1} luminanceThreshold={0.1} luminanceSmoothing={0.3} height={500} />
     </EffectComposer>
   </>
 );
