@@ -6,14 +6,14 @@ import { NeonScene } from '../components/NeonScene';
 import { Level } from '../components/Level';
 
 export const Game: React.FC = () => {
-  const {
+  const [{
     x,
     y,
     z,
     level,
     ballSpeed,
     tractionForce,
-  } = useControls({
+  }, set] = useControls(() => ({
     x: 0,
     y: 70,
     z: 10,
@@ -26,7 +26,7 @@ export const Game: React.FC = () => {
     tractionForce: {
       value: 0.15, min: 0.01, max: 1, step: 0.01,
     },
-  });
+  }));
 
   return (
     <Canvas
@@ -39,7 +39,12 @@ export const Game: React.FC = () => {
       <MapControls enabled={false} />
       <Suspense fallback={null}>
         <NeonScene>
-          <Level ballSpeed={ballSpeed} tractionForce={tractionForce} levelIndex={level} />
+          <Level
+            advanceLevel={() => set({ level: level + 1 })}
+            ballSpeed={ballSpeed}
+            tractionForce={tractionForce}
+            levelIndex={level}
+          />
         </NeonScene>
       </Suspense>
     </Canvas>

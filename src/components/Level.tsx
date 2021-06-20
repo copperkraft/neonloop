@@ -17,6 +17,7 @@ interface LevelProps {
   levelIndex: number;
   ballSpeed: number;
   tractionForce: number;
+  advanceLevel: () => any;
 }
 
 export const Level: React.FC<LevelProps> = (
@@ -24,6 +25,7 @@ export const Level: React.FC<LevelProps> = (
     levelIndex,
     ballSpeed,
     tractionForce,
+    advanceLevel,
   }: LevelProps,
 ) => {
   const {
@@ -47,7 +49,7 @@ export const Level: React.FC<LevelProps> = (
     ball.current.position.set(...start.clone().add(offset).toArray());
     velocity.current.set(ballSpeed, 0, 0);
     setCollectibles(levelCollectibles);
-  }, [start]);
+  }, [start, levelCollectibles, offset, ballSpeed]);
 
   useFrame((state, delta) => {
     ball.current.position.addScaledVector(velocity.current, delta);
@@ -59,18 +61,16 @@ export const Level: React.FC<LevelProps> = (
 
     const [x,, z] = ball.current.position.clone().sub(offset).toArray().map(Math.round);
 
-    if (x < 0 || x > width - 1 || z < 0 || z > height - 1) { // redundant as levels have walls
+    if (wallMap[z][x]) {
       init();
     }
 
-    if (wallMap[z][x]) { // wall collision
-      init();
+    if (goal.x === x && goal.z === z) {
+      advanceLevel();
     }
 
-    const fitCollectible = collectibles.findIndex(({ x: cx, z: cz }) => x === cx && z === cz);
-    if (fitCollectible !== -1) {
-      collectibles.splice(fitCollectible, 1);
-      setCollectibles([...collectibles]);
+    if (collectibles.some(({ x: cx, z: cz }) => x === cx && z === cz)) {
+      setCollectibles(collectibles.filter(({ x: cx, z: cz }) => !(x === cx && z === cz)));
     }
   });
 
