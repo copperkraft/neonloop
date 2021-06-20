@@ -2,12 +2,12 @@ import React from 'react';
 import { Line } from '@react-three/drei';
 import { Vector3 } from 'three';
 
-interface BallProps {
+interface DebugLineProps {
   origin: [number, number, number],
   vector: Vector3,
 }
 
-export const DebugLine: React.FC<BallProps> = ({ origin, vector }: BallProps) => {
+export const DebugLine: React.FC<DebugLineProps> = ({ origin, vector }: DebugLineProps) => {
   const points: [number, number, number][] = [
     origin,
     vector.toArray(),

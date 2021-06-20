@@ -9,6 +9,9 @@ import { Ball } from './Ball';
 import { WallMap } from './WallMap';
 import { EventPlane } from './EventPlane';
 import { Pin } from './Pin';
+import { MagnetLink } from './MagnetLink';
+
+const BALL_SPEED = 2;
 
 interface LevelProps {
   levelIndex: number;
@@ -20,7 +23,7 @@ export const Level: React.FC<LevelProps> = ({ levelIndex }: LevelProps) => {
   const width = level[0].length;
 
   const [linkActive, setLinkActive] = useState(false);
-  const [ballVelocity] = useState(new Vector3(5, 0, 0));
+  const [ballVelocity] = useState(new Vector3(BALL_SPEED, 0, 0));
 
   const ball = useRef<Mesh>(null!);
   const pin = useRef<Mesh>(null!);
@@ -39,7 +42,6 @@ export const Level: React.FC<LevelProps> = ({ levelIndex }: LevelProps) => {
 
   return (
     <group>
-      <Pin pin={pin} state={linkActive ? 'active' : 'valid'} />
       <EventPlane
         size={[width, height]}
         onPointerMove={movePin}
@@ -49,6 +51,8 @@ export const Level: React.FC<LevelProps> = ({ levelIndex }: LevelProps) => {
       />
       <WallMap position={[-width / 2, 0, -height / 2]} level={level} />
       <Ball ball={ball} velocity={ballVelocity} />
+      <Pin pin={pin} state={linkActive ? 'active' : 'valid'} />
+      <MagnetLink ball={ball} pin={pin} active={linkActive} />
     </group>
   );
 };

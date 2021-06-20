@@ -14,7 +14,7 @@ export function Terrain() {
       rotation={[-Math.PI / 2, 0, 0]}
       ref={terrain}
     >
-      <planeBufferGeometry attach="geometry" args={[5000, 5000, 200, 200]} />
+      <planeBufferGeometry attach="geometry" args={[5000, 5000, 500, 500]} />
       <meshStandardMaterial
         attach="material"
         color="blue"

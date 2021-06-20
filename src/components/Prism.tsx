@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { MeshProps } from '@react-three/fiber';
 import { Mesh, Shape, Vector2 } from 'three';
 import { Extrude } from '@react-three/drei';
@@ -10,7 +10,7 @@ interface PrismProps extends MeshProps{
 export const Prism: React.FC<PrismProps> = ({ vertices, children, rotation }: PrismProps) => {
   const terrain = useRef<Mesh>(null!);
 
-  const shape = new Shape(vertices.map(([x, y]) => new Vector2(x, y)));
+  const shape = useMemo(() => new Shape(vertices.map(([x, y]) => new Vector2(x, y))), [vertices]);
 
   return (
     <Extrude

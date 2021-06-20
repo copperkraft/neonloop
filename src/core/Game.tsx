@@ -13,7 +13,7 @@ export const Game: React.FC = () => {
     level,
   } = useControls({
     x: 0,
-    y: 50,
+    y: 70,
     z: 10,
     level: {
       value: 0, min: 0, max: 6, step: 1,
@@ -28,7 +28,7 @@ export const Game: React.FC = () => {
     >
       <Stats />
       <PerspectiveCamera makeDefault position={[x, y, z]} />
-      <MapControls />
+      <MapControls enabled={false} />
       <Suspense fallback={null}>
         <NeonScene>
           <Level levelIndex={level} />
