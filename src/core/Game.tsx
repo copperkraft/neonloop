@@ -11,12 +11,20 @@ export const Game: React.FC = () => {
     y,
     z,
     level,
+    ballSpeed,
+    tractionForce,
   } = useControls({
     x: 0,
     y: 70,
     z: 10,
     level: {
       value: 0, min: 0, max: 6, step: 1,
+    },
+    ballSpeed: {
+      value: 10, min: 1, max: 100, step: 0.5,
+    },
+    tractionForce: {
+      value: 0.15, min: 0.01, max: 1, step: 0.01,
     },
   });
 
@@ -31,7 +39,7 @@ export const Game: React.FC = () => {
       <MapControls enabled={false} />
       <Suspense fallback={null}>
         <NeonScene>
-          <Level levelIndex={level} />
+          <Level ballSpeed={ballSpeed} tractionForce={tractionForce} levelIndex={level} />
         </NeonScene>
       </Suspense>
     </Canvas>
