@@ -27,7 +27,7 @@ export const Level: React.FC<LevelProps> = (
   }: LevelProps,
 ) => {
   const {
-    collectibles,
+    levelCollectibles,
     start,
     goal,
     wallMap,
@@ -37,6 +37,7 @@ export const Level: React.FC<LevelProps> = (
   } = useMemo(() => parseLevel(levels[levelIndex]), [levelIndex]);
 
   const [linkActive, setLinkActive] = useState(false);
+  const [collectibles, setCollectibles] = useState(levelCollectibles);
   const velocity = useRef<Vector3>(new Vector3(ballSpeed, 0, 0));
 
   const ball = useRef<Mesh>(null!);
@@ -45,6 +46,7 @@ export const Level: React.FC<LevelProps> = (
   const init = useCallback(() => {
     ball.current.position.set(...start.clone().add(offset).toArray());
     velocity.current.set(ballSpeed, 0, 0);
+    setCollectibles(levelCollectibles);
   }, [start]);
 
   useFrame((state, delta) => {
@@ -55,14 +57,20 @@ export const Level: React.FC<LevelProps> = (
       velocity.current.add(direction.setLength(tractionForce)).setLength(ballSpeed);
     }
 
-    const { x, z } = ball.current.position.clone().sub(offset);
+    const [x,, z] = ball.current.position.clone().sub(offset).toArray().map(Math.round);
 
     if (x < 0 || x > width - 1 || z < 0 || z > height - 1) { // redundant as levels have walls
       init();
     }
 
-    if (wallMap[Math.round(z)][Math.round(x)]) { // wall collision
+    if (wallMap[z][x]) { // wall collision
       init();
+    }
+
+    const fitCollectible = collectibles.findIndex(({ x: cx, z: cz }) => x === cx && z === cz);
+    if (fitCollectible !== -1) {
+      collectibles.splice(fitCollectible, 1);
+      setCollectibles([...collectibles]);
     }
   });
 

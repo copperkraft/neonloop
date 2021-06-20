@@ -41,7 +41,7 @@ export const parseLevel = (level: LevelData) => {
       .map(({ type }) => (type === 'W' ? 1 : 0)));
 
   return {
-    collectibles,
+    levelCollectibles: collectibles,
     start,
     goal,
     wallMap,
