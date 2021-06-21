@@ -7,6 +7,7 @@ written by me and [geliogabalus](https://github.com/Geliogabalus) for GMTK Game 
 
 ## Demo
 
+![image](https://user-images.githubusercontent.com/19696618/122767825-b605b500-d2ab-11eb-9db5-6d8c36137766.png)
 Playable game is available at [github pages](http://copperkraft.github.io/neonloop)
 
 ### How to play?
