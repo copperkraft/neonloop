@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/neonloop/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/neonloop/static/js/main.4d26bbb9.chunk.js",
+    "main.js.map": "/neonloop/static/js/main.4d26bbb9.chunk.js.map",
+    "runtime-main.js": "/neonloop/static/js/runtime-main.088cd128.js",
+    "runtime-main.js.map": "/neonloop/static/js/runtime-main.088cd128.js.map",
+    "static/js/2.c57a116a.chunk.js": "/neonloop/static/js/2.c57a116a.chunk.js",
+    "static/js/2.c57a116a.chunk.js.map": "/neonloop/static/js/2.c57a116a.chunk.js.map",
+    "static/js/3.14a91008.chunk.js": "/neonloop/static/js/3.14a91008.chunk.js",
+    "static/js/3.14a91008.chunk.js.map": "/neonloop/static/js/3.14a91008.chunk.js.map",
+    "index.html": "/neonloop/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/neonloop/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.c57a116a.chunk.js.LICENSE.txt": "/neonloop/static/js/2.c57a116a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.088cd128.js",
+    "static/js/2.c57a116a.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.4d26bbb9.chunk.js"
+  ]
+}
