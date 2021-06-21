@@ -1,6 +1,6 @@
 import { LevelData } from './levelData.type';
 
-export const level8: LevelData = [
+export const vault: LevelData = [
   '                                                                                ',
   '                                                                                ',
   '                                                                                ',

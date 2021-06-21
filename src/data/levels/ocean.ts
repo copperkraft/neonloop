@@ -1,6 +1,6 @@
 import { LevelData } from './levelData.type';
 
-export const level2: LevelData = [
+export const ocean: LevelData = [
   '                WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
   '                 WWWWW                       WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
   '                  WWWW                               WWWWWWWWWWWWWWWWWWWWWWWWWWW',

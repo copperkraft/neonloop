@@ -1,6 +1,6 @@
 import { LevelData } from './levelData.type';
 
-export const level3: LevelData = [
+export const asteroids: LevelData = [
   '                                         WW                      WWWWWWWWWWWWWWW',
   '                                       WWWWW                      WWWWWWWWWWWWWW',
   '                     WW                WWWWWW                        WWWWWWWWWWW',

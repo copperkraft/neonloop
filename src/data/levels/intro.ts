@@ -1,6 +1,6 @@
 import { LevelData } from './levelData.type';
 
-export const level1: LevelData = [
+export const intro: LevelData = [
   '                                             WWWWWWWWWWWWWWWWWWWWW              ',
   '                                              WWWWWWWWWWWWWWWWWWWW              ',
   '                                              WWWWWWWWWWWWWWWWWWWW              ',

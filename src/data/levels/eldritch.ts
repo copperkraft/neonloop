@@ -1,6 +1,6 @@
 import { LevelData } from './levelData.type';
 
-export const level5: LevelData = [
+export const eldritch: LevelData = [
   '                             W          WWWWWWWWWWWWWWW       WWWWWWWWWWWWWWWWWW',
   '                             W         WWWWWWWWWWWWWWWWW             WWWWWWWWWWW',
   '                            WW         WWWWWWWWWWWWWWWWWW               WWWWWWWW',
