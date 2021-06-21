@@ -66,6 +66,10 @@ export const Level: React.FC<LevelProps> = (
 
     const [x,, z] = ball.current.position.clone().sub(offset).toArray().map(Math.round);
 
+    if (x < 0 || x > width - 1 || z < 0 || z > height - 1) {
+      init();
+    }
+
     if (wallMap[z][x]) {
       init();
     }
