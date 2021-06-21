@@ -4,11 +4,13 @@ import { Terrain } from './Terrain';
 
 interface NeonSceneProps {
   colorScheme: [string, string, string];
+  isBloom: boolean;
 }
 
 export const NeonScene: React.FC<NeonSceneProps> = ({
   children,
   colorScheme: [left, right, top],
+  isBloom,
 }: PropsWithChildren<NeonSceneProps>) => (
   <>
     <Terrain />
@@ -16,8 +18,10 @@ export const NeonScene: React.FC<NeonSceneProps> = ({
     <directionalLight color={left} intensity={4} position={[100, 0, 30]} />
     <directionalLight color={right} intensity={3} position={[-100, 0, -30]} />
     {children}
-    <EffectComposer>
-      <Bloom intensity={1} luminanceThreshold={0.1} luminanceSmoothing={0.3} height={500} />
-    </EffectComposer>
+    { isBloom && (
+      <EffectComposer>
+        <Bloom intensity={1} luminanceThreshold={0.1} luminanceSmoothing={0.3} height={500} />
+      </EffectComposer>
+    )}
   </>
 );

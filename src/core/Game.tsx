@@ -8,16 +8,11 @@ import { levelColors } from '../data/levels/levelColors';
 
 export const Game: React.FC = () => {
   const [{
-    x,
-    y,
-    z,
     level,
     ballSpeed,
     tractionForce,
+    isBloom,
   }, set] = useControls(() => ({
-    x: 0,
-    y: 70,
-    z: 10,
     level: {
       value: 0, min: 0, max: 7, step: 1,
     },
@@ -27,6 +22,7 @@ export const Game: React.FC = () => {
     tractionForce: {
       value: 30, min: 10, max: 200, step: 10,
     },
+    isBloom: false,
   }), { visible: false });
 
   return (
@@ -36,10 +32,10 @@ export const Game: React.FC = () => {
       }}
     >
       <Stats />
-      <PerspectiveCamera makeDefault position={[x, y, z]} />
+      <PerspectiveCamera makeDefault position={[0, 70, 10]} />
       <MapControls enabled={false} />
       <Suspense fallback={null}>
-        <NeonScene colorScheme={levelColors[level % levelColors.length]}>
+        <NeonScene isBloom={isBloom} colorScheme={levelColors[level % levelColors.length]}>
           <Level
             advanceLevel={() => set({ level: level + 1 })}
             ballSpeed={ballSpeed}
