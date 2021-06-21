@@ -4,6 +4,7 @@ import { MapControls, PerspectiveCamera, Stats } from '@react-three/drei';
 import { useControls } from 'leva';
 import { NeonScene } from '../components/NeonScene';
 import { Level } from '../components/Level';
+import { levelColors } from '../data/levels/levelColors';
 
 export const Game: React.FC = () => {
   const [{
@@ -18,15 +19,15 @@ export const Game: React.FC = () => {
     y: 70,
     z: 10,
     level: {
-      value: 0, min: 0, max: 6, step: 1,
+      value: 0, min: 0, max: 7, step: 1,
     },
     ballSpeed: {
       value: 10, min: 1, max: 100, step: 0.5,
     },
     tractionForce: {
-      value: 0.15, min: 0.01, max: 1, step: 0.01,
+      value: 30, min: 10, max: 200, step: 10,
     },
-  }));
+  }), { visible: false });
 
   return (
     <Canvas
@@ -38,7 +39,7 @@ export const Game: React.FC = () => {
       <PerspectiveCamera makeDefault position={[x, y, z]} />
       <MapControls enabled={false} />
       <Suspense fallback={null}>
-        <NeonScene>
+        <NeonScene colorScheme={levelColors[level % levelColors.length]}>
           <Level
             advanceLevel={() => set({ level: level + 1 })}
             ballSpeed={ballSpeed}

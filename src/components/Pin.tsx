@@ -18,7 +18,7 @@ export const Pin: React.FC<PinProps> = ({ state, pin }: PinProps) => (
         color="green"
         roughness={0}
         emissive={new Color(state === 'invalid' ? '#ff0000' : '#0000ff')}
-        emissiveIntensity={state === 'active' ? 1 : 0.2}
+        emissiveIntensity={state === 'active' ? 5 : 0.2}
         metalness={1}
         opacity={1}
         transparent

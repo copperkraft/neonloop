@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import { Terrain } from './Terrain';
 
-export const NeonScene: React.FC = ({ children }: React.PropsWithChildren<{}>) => (
+interface NeonSceneProps {
+  colorScheme: [string, string, string];
+}
+
+export const NeonScene: React.FC<NeonSceneProps> = ({
+  children,
+  colorScheme: [left, right, top],
+}: PropsWithChildren<NeonSceneProps>) => (
   <>
     <Terrain />
-    <directionalLight color="purple" intensity={1} position={[5, 3, -5]} />
-    <directionalLight color="blue" intensity={4} position={[100, 0, 30]} />
-    <directionalLight color="red" intensity={3} position={[-100, 0, -30]} />
+    <directionalLight color={top} intensity={1} position={[5, 3, -5]} />
+    <directionalLight color={left} intensity={4} position={[100, 0, 30]} />
+    <directionalLight color={right} intensity={3} position={[-100, 0, -30]} />
     {children}
     <EffectComposer>
       <Bloom intensity={1} luminanceThreshold={0.1} luminanceSmoothing={0.3} height={500} />

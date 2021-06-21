@@ -51,12 +51,17 @@ export const Level: React.FC<LevelProps> = (
     setCollectibles(levelCollectibles);
   }, [start, levelCollectibles, offset, ballSpeed]);
 
-  useFrame((state, delta) => {
-    ball.current.position.addScaledVector(velocity.current, delta);
+  useEffect(() => init(), [levelIndex]);
 
-    if (linkActive) {
-      const direction = new Vector3().subVectors(pin.current.position, ball.current.position);
-      velocity.current.add(direction.setLength(tractionForce)).setLength(ballSpeed);
+  useFrame((state, delta) => {
+    const ballPosition = ball.current.position;
+    const pinPosition = pin.current.position;
+
+    ballPosition.addScaledVector(velocity.current, delta);
+    const direction = pinPosition.clone().sub(ballPosition);
+
+    if (linkActive && direction.angleTo(velocity.current) > Math.PI / 2) {
+      velocity.current.add(direction.setLength(tractionForce * delta)).setLength(ballSpeed);
     }
 
     const [x,, z] = ball.current.position.clone().sub(offset).toArray().map(Math.round);
@@ -77,7 +82,7 @@ export const Level: React.FC<LevelProps> = (
   useEffect(() => init(), []);
 
   const movePin = useCallback((event: ThreeEvent<PointerEvent>) => {
-    pin.current.position.set(...event.point.toArray());
+    pin.current.position.set(...event.point.setY(0).toArray());
   }, []);
 
   const activatePin = useCallback(() => {
