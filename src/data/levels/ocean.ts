@@ -5,7 +5,7 @@ export const ocean: LevelData = [
   '                 WWWWW                       WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
   '                  WWWW                               WWWWWWWWWWWWWWWWWWWWWWWWWWW',
   '                  WWWW     C                            WWWWWWWWWWWWWWWWWWWWWWWW',
-  '    S             WWWW                                   WWWWWWWWWWWWWWWWWWWWWWW',
+  ' S                WWWW                                   WWWWWWWWWWWWWWWWWWWWWWW',
   '                 WWWWW                                    WWWWWWWWWWWWWWWWWWWWWW',
   '                 WWWWWW                                   WWWWWWWWWWWWWWWWWWWWWW',
   '                WWWWWWW                                   WWWWWWWWWWWWWWWWWWWWWW',

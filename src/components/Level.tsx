@@ -12,12 +12,14 @@ import { MagnetLink } from './MagnetLink';
 import { parseLevel } from '../utils/parseLevel';
 import { Goal } from './Goal';
 import { Collectible } from './Collectible';
+import { LevelResult, Stats } from './Stats';
 
 interface LevelProps {
   levelIndex: number;
   ballSpeed: number;
   tractionForce: number;
-  advanceLevel: () => any;
+  levelResults: LevelResult[];
+  advanceLevel: (walkthroughResult: LevelResult) => any;
 }
 
 export const Level: React.FC<LevelProps> = (
@@ -26,6 +28,7 @@ export const Level: React.FC<LevelProps> = (
     ballSpeed,
     tractionForce,
     advanceLevel,
+    levelResults,
   }: LevelProps,
 ) => {
   const {
@@ -40,6 +43,7 @@ export const Level: React.FC<LevelProps> = (
 
   const [linkActive, setLinkActive] = useState(false);
   const [collectibles, setCollectibles] = useState(levelCollectibles);
+  const [startTime, setStartTime] = useState(0);
   const velocity = useRef<Vector3>(new Vector3(ballSpeed, 0, 0));
 
   const ball = useRef<Mesh>(null!);
@@ -49,6 +53,7 @@ export const Level: React.FC<LevelProps> = (
     ball.current.position.set(...start.clone().add(offset).toArray());
     velocity.current.set(ballSpeed, 0, 0);
     setCollectibles(levelCollectibles);
+    setStartTime(Date.now());
   }, [start, levelCollectibles, offset, ballSpeed]);
 
   useEffect(() => init(), [levelIndex]);
@@ -75,7 +80,10 @@ export const Level: React.FC<LevelProps> = (
     }
 
     if (goal.x === x && goal.z === z) {
-      advanceLevel();
+      advanceLevel({
+        time: Date.now() - startTime,
+        collectibles: levelCollectibles.length - collectibles.length,
+      });
     }
 
     if (collectibles.some(({ x: cx, z: cz }) => x === cx && z === cz)) {
@@ -99,6 +107,7 @@ export const Level: React.FC<LevelProps> = (
 
   return (
     <group>
+      <Stats position={offset} levelResults={levelResults} />
       <EventPlane
         size={[width, height]}
         onPointerMove={movePin}
